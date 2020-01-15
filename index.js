@@ -3,13 +3,13 @@ const robots = {
     text:require('./robots/text')
 }
 
-function start() {
+async function start() {
     const content = {}
 
     content.searchTerm = askAndReturnSearchTerm()
     content.prefix = askAndReturnPrefix()
 
-    robots.text(content)
+    await robots.text(content)
 
     function askAndReturnSearchTerm() {
         return readline.question('Type a Wikipedia search term: ')
@@ -19,12 +19,11 @@ function start() {
         const prefixes = ['Who is', 'What is', 'The history of']
         const selectedPrefixIndex = readline.keyInSelect(prefixes)
         const selectedPrefixText = prefixes[selectedPrefixIndex]
-        
-        console.log(selectedPrefixIndex, selectedPrefixText);
+
         return selectedPrefixText;
     }
 
-    console.log(content);
+    console.log(content)
 }
 
 start()
